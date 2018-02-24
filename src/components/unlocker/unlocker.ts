@@ -6,6 +6,7 @@ import { Component, ViewChild, Input, Output, EventEmitter, ElementRef } from '@
 })
 export class Unlocker {
   setIntID;
+  @Output() unlocked: EventEmitter<boolean> = new EventEmitter();
   @ViewChild('unlock') input:any; 
 
   constructor(public element: ElementRef) {
@@ -13,12 +14,12 @@ export class Unlocker {
   }
 
   ngAfterViewInit() {
-    console.log('ionViewDidLoad')
-    console.log(this.element.nativeElement)
+    // console.log('ionViewDidLoad')
+    // console.log(this.element.nativeElement)
   }
 
   checkUnlock() {
-    console.log('checkUnlock')
+    // console.log('checkUnlock')
     console.log(this.element.nativeElement);
     let theRange = Number(this.input.nativeElement.value);
     console.log(theRange);
@@ -27,19 +28,21 @@ export class Unlocker {
       console.log('unlock');
       this.unlockAction();
     } else {
-      // this.setIntID = setInterval(function () {
-      //   console.log(this.input.nativeElement.value)
-      //   if (this.input.nativeElement.value > 0) {
-      //     this.value = theRange--;
-      //   } else {
-      //     clearInterval(this.setIntID);
-      //   }
-      // })
+      this.setIntID = setInterval(() => {
+        // console.log(this.input.nativeElement.value)
+        if (this.input.nativeElement.value > 0) {
+          this.input.nativeElement.value = theRange--;
+        } else {
+          this.input.nativeElement.value = 0;
+          clearInterval(this.setIntID);
+        }
+      }, 1);
     }
   }
 
   unlockAction(){
     console.log('unlockAction');
     //Emit Event
+    this.unlocked.emit(true);
   }
 }
