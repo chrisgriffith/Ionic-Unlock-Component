@@ -1,0 +1,43 @@
+unlocker {
+    input[type="range"] {
+        width: 320px;
+        margin: 100px;
+        background: -webkit-gradient(linear, 0 0, 0 bottom, from(#000), to(#1f1f1f));
+        -webkit-appearance: none;
+        border-radius: 10px;
+        padding: 5px;
+        transition: opacity 0.5s;
+        position: relative;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border-radius: 10px;
+        background: -webkit-linear-gradient(top, #fafafa 0%,#dedede 50%,#cfcfcf 51%,#a3a3a3 100%);
+        z-index: 1;
+        width: 75px;
+        position: relative;
+        height: 50px;
+    }
+    
+    input[type="range"]:before {
+        content: "slide to Unlock";
+        color: #8a8a8a;
+        position: absolute;
+        left: 100px;
+        top: 10px;
+        z-index: 1;
+        font-size: 32px;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb:before {
+        color: #8a8a8a;
+        position: absolute;
+        left: 5px;
+        top: -10px;
+        z-index: 1;
+        font-size: 56px;
+        font-weight: bold;
+        content: "→";
+    }
+}
