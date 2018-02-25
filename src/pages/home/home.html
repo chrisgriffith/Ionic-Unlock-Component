@@ -7,5 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <unlocker></unlocker>
+  <unlocker (unlocked)="unlockedHandler($event)"></unlocker>
+
+  <h3>Unlocked: {{unlocked}}</h3>
 </ion-content>

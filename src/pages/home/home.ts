@@ -6,9 +6,15 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  unlocked = false;
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  unlockedHandler(event: boolean) {
+    console.log(event);
+    this.unlocked = event;
   }
 
 }
