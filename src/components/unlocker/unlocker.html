@@ -1,2 +1,1 @@
-<!-- Generated template for the UnlockerComponent component -->
-<input #unlock type="range" class="slideToUnlock" value="0" max="100" (click)="checkUnlock()">
+<input #unlock type="range" class="slideToUnlock" value="0" max="100" (click)="checkUnlock($event)" (mouseout)="checkUnlock($event)">

@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'unlocker',
@@ -7,42 +7,47 @@ import { Component, ViewChild, Input, Output, EventEmitter, ElementRef } from '@
 export class Unlocker {
   setIntID;
   @Output() unlocked: EventEmitter<boolean> = new EventEmitter();
-  @ViewChild('unlock') input:any; 
+  @ViewChild('unlock') input: any;
 
-  constructor(public element: ElementRef) {
-    console.log('Hello UnlockerComponent Component');
+  constructor() {
+   
   }
 
-  ngAfterViewInit() {
-    // console.log('ionViewDidLoad')
-    // console.log(this.element.nativeElement)
+  nAgfterViewInit() {
+    
   }
 
-  checkUnlock() {
-    // console.log('checkUnlock')
-    console.log(this.element.nativeElement);
+  checkUnlock(evt: Event) {
     let theRange = Number(this.input.nativeElement.value);
-    console.log(theRange);
 
-    if (theRange === 100) {
-      console.log('unlock');
-      this.unlockAction();
+    if (evt.type == 'click') {
+      if (theRange === 100) {
+        this.unlockAction();
+      } else {
+        this.setIntID = setInterval(() => {
+          if (this.input.nativeElement.value > 0) {
+            this.input.nativeElement.value = theRange--;
+          } else {
+            this.input.nativeElement.value = 0;
+            this.unlocked.emit(false);
+            clearInterval(this.setIntID);
+          }
+        }, 1);
+      }
     } else {
       this.setIntID = setInterval(() => {
-        // console.log(this.input.nativeElement.value)
         if (this.input.nativeElement.value > 0) {
           this.input.nativeElement.value = theRange--;
         } else {
           this.input.nativeElement.value = 0;
+          this.unlocked.emit(false);
           clearInterval(this.setIntID);
         }
       }, 1);
     }
   }
 
-  unlockAction(){
-    console.log('unlockAction');
-    //Emit Event
+  unlockAction() {
     this.unlocked.emit(true);
   }
 }
