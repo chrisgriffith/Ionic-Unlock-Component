@@ -10,10 +10,6 @@ export class Unlocker {
   @ViewChild('unlock') input: any;
 
   constructor() {
-   
-  }
-
-  nAgfterViewInit() {
     
   }
 
