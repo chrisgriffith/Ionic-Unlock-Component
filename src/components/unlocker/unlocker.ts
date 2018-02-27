@@ -15,8 +15,7 @@ export class Unlocker {
 
   checkUnlock(evt: Event) {
     let theRange = Number(this.input.nativeElement.value);
-
-    if (evt.type == 'click') {
+    if (evt.type == 'touchend') {
       if (theRange === 100) {
         this.unlockAction();
       } else {
