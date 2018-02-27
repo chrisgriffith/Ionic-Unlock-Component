@@ -1,6 +1,6 @@
 unlocker {
     input[type="range"] {
-        width: 90%;
+        width: 100%;
         background: -webkit-gradient(linear, 0 0, 0 bottom, from(#000), to(#1f1f1f));
         -webkit-appearance: none;
         border-radius: 10px;
@@ -24,9 +24,9 @@ unlocker {
         color: #8a8a8a;
         position: absolute;
         left: 100px;
-        top: 10px;
+        top: 14px;
         z-index: 1;
-        font-size: 32px;
+        font-size: 28px;
     }
     
     input[type="range"]::-webkit-slider-thumb:before {
